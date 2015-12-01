@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Demo</title>
+		<script src="jquery-2.1.4.js" type="text/javascript"></script>
+		
+	  <script src="jquery-ui/external/jquery/jquery.js"></script>
+	  <script src="jquery-ui/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+		<link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+	  <script src="jquery-ui/jquery-ui.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+	
+    <script src="conversation.js" type="text/javascript"></script>
+    <script src="character_animation.js" type="text/javascript"></script>
+    <link href="bunny_base.css" rel="stylesheet">
+    <script type="text/javascript" language="javascript" charset="utf-8">
+        // <![CDATA[
+        $(document).ready(function(){
+			  $('#eliza').eliza();
+
+			function easeLeftRight(obj, currCount, maxCount, duration, easing) {
+				isLeft = obj.hasClass("leftEaseInOut");
+				duration = duration || 1000;
+				easing = easing || "easeInOutCubic";
+				var fn = function() {
+					setTimeout(function() {easeLeftRight(obj, currCount+1, maxCount, duration, easing)},	duration);
+				}
+				if (currCount >= maxCount) {
+					if (isLeft) {
+						//obj.switchClass("leftEaseInOut", "baseEaseInOut", duration);
+						obj.removeClass("leftEaseOut", duration);
+					} else {
+						obj.removeClass("rightEaseOut", duration);
+					}
+					//
+					
+				} else if (isLeft) {
+						obj.switchClass("leftEaseInOut", "rightEaseInOut", duration, easing, fn);
+				} else {
+						obj.switchClass("rightEaseInOut", "leftEaseInOut", duration, easing, fn);
+				}
+			}
+			
+			var noseTwitchFn = function() {
+				$('#nose_img').toggleClass("noseTwitch", 100, "easeInBack");
+			}
+			$('#nose_img').click(function() {
+				noseTwitchFn();
+				for (var i = 0; i < 5; i++) {
+            setTimeout(noseTwitchFn, 100);
+        }
+				
+			});
+			
+			$('#head_box').click(function() {
+				easeLeftRight($('#rightear_img'), 0, 7);
+				easeLeftRight($('#leftear_img'), 0, 7);
+			})
+			
+			$('#rightear_img').mouseover(function() {
+				easeLeftRight($('#rightear_img'), 0, 8);
+			});
+			
+			$('#leftear_img').mouseover(function() {
+				easeLeftRight($('#leftear_img'), 0, 5);
+			});
+			
+			$('#body_img').click(function() {
+				easeLeftRight($('#head_box'), 0, 3);
+			});
+			
+
+			//var obj = $('#rightear_img');
+			//var bSwingRight = true;
+			//setInterval(function(){
+			//	obj.toggleClass("leftEaseInOut", bSwingRight, 1000);
+			//	obj.toggleClass("rightEaseInOut", !bSwingRight, 1000);
+			//	bSwingRight = !bSwingRight;
+			//}, 2000);
+			
+			var blinkFn = function() {
+				$('#lefteye_img').toggleClass("blink", 1000, "easeInOutCubic");
+				$('#righteye_img').toggleClass("blink", 1000, "easeInOutCubic");
+			}
+			setInterval(function() {
+				blinkFn();
+				// Want to unblink fast.
+				setTimeout(blinkFn, 500);
+			}, 5000);
+
+		});
+        // ]]>
+    </script>
+</head>
+<body>
+	
+	
+	  <div id='container'>
+			<div id="eliza_box child">
+		<input type="text" id="eliza" style="width: 400px;"/>
+	</div>
+			<div style="width:100%; height:1px">.</div>
+    <div id="bunny_box" class="img clearfix">
+			<img class="img" id="backlegs_img" src="bunny/backlegs.png"/>
+			<img class="img" id="body_img" src="bunny/body.png"/>
+		  <img class="img" id="frontlegs_img" src="bunny/frontlegs.png"/>
+			<div class="img" id="head_box">
+				<img class="img" id="rightear_img" src="bunny/rightear.png"/>
+				<img class="img" id="leftear_img" src="bunny/leftear.png"/>
+				<img class="img" id="head_img" src="bunny/head.png"/>
+				<img class="img" id="lefteye_img" src="bunny/lefteye.png"/>
+				<img class="img" id="righteye_img" src="bunny/righteye.png"/>
+				<img class="img" id="mouth_img" src="bunny/mouth.png"/>
+				<img class="img" id="nose_img" src="bunny/nose.png"/>
+			</div>
+			
+		</div>
+			
+		</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Demo</title>
+    <style>
+        canvas {
+            -webkit-transition: all 1s ease-in-out;
+            -moz-transition: all 1s ease-in-out;
+            -o-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
+        }
+
+.right5 {
+    transition: all 1s ease-in-out;
+    transform: rotate(50deg);
+    transform-origin: bottom;
+}
+ 
+.left5 {
+    transition: all 1s ease-in-out;
+    transform: rotate(-50deg);
+    transform-origin: bottom;
+}
+        
+    </style>
+    <script src="https://code.createjs.com/easeljs-0.8.1.min.js"></script>
+    <script src="jquery-2.1.4.js" type="text/javascript"></script>
+    <script src="conversation.js" type="text/javascript"></script>
+    <script src="character_animation.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" charset="utf-8">
+        // <![CDATA[
+            $(document).ready(function(){
+                //$('#eliza').eliza();
+                $('#character').character();
+            });
+        // ]]>
+    </script>
+</head>
+<body>
+<canvas width="500" height="500" id="myCanvas"></canvas>
+
+    <!--input type="text" id="eliza" style="width: 300px;"/-->
+</body>
+</html>

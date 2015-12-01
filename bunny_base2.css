@@ -1,0 +1,84 @@
+.img {
+  position:absolute;
+}
+#body_img {
+  left:10px; 
+  top:210px;
+}
+#backlegs_img {
+  left:30px;
+  top:254px;
+}
+#frontlegs_img {
+  left:45px; 
+  top:220px;
+}
+#head_img {
+  left:3px;
+  top:82px;
+}
+#leftear_img {
+  left:0px;
+  top: 10px;
+  transform-origin:100% 100%;
+}
+#rightear_img {
+  left: 130px;
+  top: 25px;
+  transform-origin:0% 100%;
+}
+#lefteye_img {
+  left: 37px;
+  top: 132px;
+}
+#righteye_img {
+  left: 118px; 
+  top: 128px;
+}
+#mouth_img {
+  left: 68px;
+  top: 170px;
+}
+#nose_img {
+  left: 73px;
+  top: 168px;
+}
+#head_box {
+  height: 228px;
+  width: 188px;
+  top: 0px;
+  left: 0px;
+  transform-origin: bottom;
+}
+#bunny_box {
+  width:500px;
+  height:500px;
+  margin:100px;
+}
+
+.rightEaseInOut {
+  transition: all 1s ease-in-out;
+  transform: rotate(15deg);
+}
+.leftEaseInOut {
+  transition: all 1s ease-in-out;
+  transform: rotate(-15deg);
+}
+
+.baseEaseInOut {
+    transition: all 1s ease-in-out;
+    transform: rotate(0deg);
+}
+
+.blink {
+  transition: all .5s ease-in-out;
+  transform: scale(1, .1);
+}
+
+.noseTwitch {
+    transition: all .5s ease-in-out;
+    transform: translate(0px, -3px);
+}
+.clear { clear: both;}
+
+

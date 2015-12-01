@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Demo</title>
+    <style>
+				img {
+						position:absolute;
+				}
+				#backleg_img {
+						top:140px;
+						left:5px;
+				}
+				#leftleg_img {
+						top:190px;
+						left:30px;
+				}
+				#rightleg_img {
+						top:190px;
+						left:130px;
+				}
+				#torso_img {
+						top:120px;
+						left:33px;
+				}
+				#head_img {
+						top:0px;
+						left:0px;
+				}
+
+				.right5 {
+						transition: all 1s ease-in-out;
+						transform: rotate(30deg);
+						transform-origin: bottom;
+				}
+				 
+				.left5 {
+						transition: all 1s ease-in;
+						transform: rotate(-10deg);
+						transform-origin: bottom;
+				}
+        
+    </style>
+    <script src="https://code.createjs.com/easeljs-0.8.1.min.js"></script>
+    <script src="jquery-2.1.4.js" type="text/javascript"></script>
+    <script src="conversation.js" type="text/javascript"></script>
+    <script src="character_animation.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript" charset="utf-8">
+        // <![CDATA[
+        $(document).ready(function(){
+                //$('#eliza').eliza();
+            var bSwingRight = true;
+						setInterval(function(){
+								if (bSwingRight == 0) {
+										$('#head_img').removeClass("left5");
+										$('#head_img').addClass("right5");
+								} else {
+										$('#head_img').removeClass("right5");
+										$('#head_img').addClass("left5");
+								}
+								bSwingRight = !bSwingRight;
+						}, 1000);
+						
+							$('#avatar').click(function() {
+						alert( "Handler for .click() called." );
+				});
+				});
+				
+			
+        // ]]>
+    </script>
+</head>
+<body>
+
+    <div id="avatar", style="width:500px;height:500px">
+			<img id="backleg_img" src="dog/backleg.png"/>
+			<img id="leftleg_img" src="dog/leftleg.png"/>
+			<img id="rightleg_img" src="dog/rightleg.png"/>
+			<img id="torso_img" src="dog/torso.png"/>
+			<img id="head_img" src="dog/head_w_eyes.png"/>
+			
+		</div>
+    <!--input type="text" id="eliza" style="width: 300px;"/-->
+</body>
+</html>
