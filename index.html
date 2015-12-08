@@ -29,15 +29,16 @@
 				var fn = function() {
 					setTimeout(function() {easeLeftRight(obj, currCount+1, maxCount, duration, easing)},	duration);
 				}
-				if (currCount >= maxCount) {
+				if (currCount > maxCount) {
+          obj.removeClass("baseEaseInOut");
+        } else if (currCount == maxCount) {
 					if (isLeft) {
-						//obj.switchClass("leftEaseInOut", "baseEaseInOut", duration);
-						obj.removeClass("leftEaseOut", duration);
+						obj.switchClass("leftEaseInOut", "baseEaseInOut", duration, easing, fn);
+						//obj.removeClass("leftEaseInOut", duration);
 					} else {
-						obj.removeClass("rightEaseOut", duration);
+						obj.switchClass("rightEaseInOut", "baseEaseInOut", duration, easing, fn);
+						//obj.removeClass("rightEaseInOut", duration);
 					}
-					//
-					
 				} else if (isLeft) {
 						obj.switchClass("leftEaseInOut", "rightEaseInOut", duration, easing, fn);
 				} else {
@@ -48,15 +49,21 @@
 			var noseTwitchFn = function() {
 				$('#nose_img').toggleClass("noseTwitch", 100, "easeInBack");
 			}
-			$('#nose_img').click(function() {
+			$('#eliza').mouseover(function() {
 				noseTwitchFn();
 				for (var i = 0; i < 5; i++) {
             setTimeout(noseTwitchFn, 100);
         }
-				
 			});
 			
-			$('#head_box').click(function() {
+			$('#eliza').keydown(function() {
+				noseTwitchFn();
+				for (var i = 0; i < 5; i++) {
+            setTimeout(noseTwitchFn, 100);
+        }
+			});
+			
+			$('#head_img').mouseover(function() {
 				easeLeftRight($('#rightear_img'), 0, 7);
 				easeLeftRight($('#leftear_img'), 0, 7);
 			})
@@ -69,8 +76,8 @@
 				easeLeftRight($('#leftear_img'), 0, 5);
 			});
 			
-			$('#body_img').click(function() {
-				easeLeftRight($('#head_box'), 0, 3);
+			$('.eliza_response').mouseover(function() {
+				easeLeftRight($('#head_box'), 0, 4);
 			});
 			
 
